@@ -47,6 +47,8 @@ public class FacebookTest {
     // public void hello() {}
     @Test
       public void testFacebook() throws Exception{
+          
+     
         System.setProperty("webdriver.gecko.driver","c:\\data\\geckodriver.exe");
         WebDriver driver = new FirefoxDriver();
         String baseUrl = "http://www.facebook.com";
@@ -54,10 +56,20 @@ public class FacebookTest {
         driver.get(baseUrl);
         driver.findElement(By.id("email")).sendKeys("sija_r@yahoo.co.in");
         driver.findElement(By.id("pass")).sendKeys("Sija@#2014");
+        
         driver.findElement(By.id("u_0_2")).click();
+        try{
+            assertEquals("Facebook",driver.getTitle());
+            System.out.println("Login is successful");
+        
+        }catch(Throwable e){
+                
+            System.out.println("Login not successful");
+        }
         Thread.sleep (5000);
         driver.close();
-    }
+    
         
     }
+}
 
